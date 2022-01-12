@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas draw</title>
+    <link rel="stylesheet" href="./styles/index.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.0/polyfills.umd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+    <script src="./scripts/fabric.js"></script>
+    <script src="./scripts/app.js" defer></script>
+</head>
+<body>
+    <div id="app">
+        <section class="flex flex-column">
+            <div>
+                <label title="Add an image" class="myFile"><span class="mdi mdi-image">Add image</span>
+                <input type="file" id="file" />
+            </div>
+            <div id="templates" class="images">
+                <h2>Background</h2>
+                <div class="flex">
+                    <div class="flex flex-column">
+                        <img src="./images/sample_1.jpeg" alt="">
+                        <button id="sample_1" style="width: 100px">click</button>
+                    </div>
+                    <div class="flex flex-column">
+                        <img src="./images/sample_2.jpeg" alt="">
+                        <button id="sample_2" class="sample_2" style="width: 100px">click</button>
+                    </div>
+                    <div class="flex flex-column">
+                        <img src="./images/sample_3.jpeg" alt="">
+                        <button id="sample_3" class="sample_2" style="width: 100px">click</button>
+                    </div>
+                    <div class="flex flex-column">
+                        <img src="./images/sample_4.jpeg" alt="">
+                        <button id="sample_4" style="width: 100px">click</button>
+
+                    </div>
+                </div>
+                <div class="mt-2">
+                    <a id="save" href="#">Save as image</a>
+                    <a id="save-pdf" href="#">Save as pdf</a>
+                </div>
+            </div>
+        </section>
+        <section id="canvas-section">
+            <canvas id="c" style="border:1px solid #ccc"></canvas>
+        </section>
+    </div>
+        
+</body>
+</html>
