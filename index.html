@@ -6,20 +6,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Canvas draw</title>
     <link rel="stylesheet" href="./styles/index.css">
+    <script src="./scripts/modernizr.min.js"></script>
+    <script src="./scripts/jscolor.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.0/polyfills.umd.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
     <script src="./scripts/fabric.js"></script>
+    <!-- <script src="./scripts/customise-control.min.js"></script> -->
     <script src="./scripts/app.js" defer></script>
 </head>
 <body>
     <div id="app">
-        <section class="flex flex-column">
+        <div style="display: flex; flex-direction: column;">
             <div>
-                <label title="Add an image" class="myFile"><span class="mdi mdi-image">Add image</span>
-                <input type="file" id="file" />
+                <button data-mode="pan" id="pan">Drag Bg Image</button>
+                <div id="draw-section">
+                    <button data-mode="drawing" id="draw">Draw</button>
+                    <input id="size" type="range" min="8" max="32">
+                    <div data-mode="_PENCIL" class="draw-mode default"></div>
+                    <div data-mode="_SPRAY" class="draw-mode small"></div>
+                    <div data-mode="_CIRCLE" class="draw-mode medium"></div>
+                    <input id="color-picker" value="#000000" data-jscolor=""> 
+                </div>
+                <div class="section">
+                    <button id="add-circle">Add Circle</button>
+                    <button id="add-rect">Add Rect</button>
+                </div>
+                <div class="section">
+                    <button data-mode="clear" id="clear">Clear</button> 
+                    <button id="restore" disabled="true">Restore</button>
+                </div>
+                <div class="files-section section">
+                    <label title="Add an image" class="myFile"><span class="mdi mdi-image">Add image</span>
+                        <input type="file" id="file" />
+                    </label>
+                    <label title="Add a background" class="myFile2">
+                        <span class="mdi mdi-image"> Add Background</span>
+                        <input type="file" id="file2" />
+                    </label>
+                </div>
+                <img draggable="true" class="draggable-image" src="http://i.imgur.com/q9aLMza.png" width="100" height="100"></img>
+                <label for="export">
+                    <a id="save" href="#">Save as image</a>
+                    <a id="save-pdf" href="#">Save as pdf</a>
+                </label>
             </div>
             <div id="templates" class="images">
-                <h2>Background</h2>
+                <h2>Templates</h2>
                 <div class="flex">
                     <div class="flex flex-column">
                         <img src="./images/sample_1.jpeg" alt="">
@@ -39,15 +71,16 @@
 
                     </div>
                 </div>
-                <div class="mt-2">
-                    <a id="save" href="#">Save as image</a>
-                    <a id="save-pdf" href="#">Save as pdf</a>
-                </div>
             </div>
-        </section>
-        <section id="canvas-section">
+            <div id="avatar">
+                <h2>Avatar</h2>
+                <img draggable="true" class="draggable-image" src="./images/img_avatar.png" alt="">
+                <img draggable="true" class="draggable-image" src="./images/avatar.jpg" alt="">
+            </div>
+        </div>
+        <div id="canvas-section">
             <canvas id="c" style="border:1px solid #ccc"></canvas>
-        </section>
+        </div>
     </div>
         
 </body>
